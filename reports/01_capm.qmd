@@ -1,14 +1,16 @@
 ---
 title: "Econometria Aplicada à Finanças"
 subtitle: "Modelo de Regressão Linear Simles - Estimação do CAPM"
-author: "Escreva Seu Nome"
+author: "Washington S. da Silva"
 lang: pt
 date: today
 format: 
   html:
+    theme: cosmos
     toc: true
-    self-contained: true
     number-sections: true
+    code-fold: true
+    self-contained: true
 execute:
   echo: true
   message: false
