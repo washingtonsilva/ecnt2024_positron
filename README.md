@@ -13,10 +13,10 @@
 
 - Para importar a planilha Excel com o Pandas foi necessário instalar o módulo xlrd no ambiente virtual: 
 
-    - `pip install xlrd`
+    - `pip install xlrd` (Win: `conda install xlrd` )
 
-2. Para gerar arquivos quarto html, foi necessário instalar os seguintes pacotes: 
+2. Para gerar arquivos quarto html, foi necessário instalar os seguintes pacotes no ambiente virtual: 
 
-    - `pip install pyyaml`
-    - `pip install nbformat`
-    - `pip install nbclient`
+    - `pip install pyyaml` (Win: `conda install pyyaml` )
+    - `pip install nbformat` (Win: `conda install nbformat`)
+    - `pip install nbclient` (Win: `conda install nbclient`)
