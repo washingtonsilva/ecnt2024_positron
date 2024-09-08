@@ -3122,7 +3122,7 @@ vertical-align: -.125em;
     <div>
     <div class="quarto-title-meta-heading">Data de Publicação</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">16 de agosto de 2024</p>
+      <p class="date">7 de setembro de 2024</p>
     </div>
   </div>
   
@@ -3134,9 +3134,7 @@ vertical-align: -.125em;
 </header>
 
 
-<div id="6e5d161b" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="eb8ad3e5" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Carrega os modulos necessarios</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -3145,34 +3143,24 @@ vertical-align: -.125em;
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> kurtosis, skew</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <section id="importação-da-planilha-de-dados" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Importação da Planilha de Dados</h1>
 <p>Define o caminho relativo para a planilha Excel:</p>
-<div id="35921197" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="2fc4f6d1" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>path_to_capm <span class="op">=</span> Path(<span class="st">&quot;../data/raw/capm.xls&quot;</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>path_to_capm</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>PosixPath(&#39;../data/raw/capm.xls&#39;)</code></pre>
 </div>
 </div>
 <p>Importa a planilha Excel:</p>
-<div id="4f3f3a2f" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="7538b831" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dados_capm <span class="op">=</span> pd.read_excel(path_to_capm, engine<span class="op">=</span><span class="st">&#39;xlrd&#39;</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Exibe a estrutura dos dados:</p>
-<div id="87b8ae13" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="36cd912b" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dados_capm.info())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 194 entries, 0 to 193
@@ -3192,11 +3180,8 @@ None</code></pre>
 </div>
 </div>
 <p>Exibe as 5 primeiras e ultimas linhas dos dados:</p>
-<div id="ff59c0d2" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="ecb6755f" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dados_capm)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Date        SANDP   FORD         GE  MICROSOFT     ORACLE  USTB3M
 0   2002-01-01  1130.199951  15.30  37.150002  31.855000  17.260000    1.68
@@ -3218,22 +3203,16 @@ None</code></pre>
 <section id="preparação-dos-dados" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Preparação dos Dados</h1>
 <p>Cálculo dos retornos compostos continuamente (logarítmicos). Os comandos a seguir também adicionam os retornos à data frame:</p>
-<div id="23ca2828" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="74b70d2c" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;ret_sp500&#39;</span>] <span class="op">=</span> np.log(dados_capm[<span class="st">&#39;SANDP&#39;</span>]).diff() <span class="op">*</span> <span class="dv">100</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;ret_ford&#39;</span>] <span class="op">=</span> np.log(dados_capm[<span class="st">&#39;FORD&#39;</span>]).diff() <span class="op">*</span> <span class="dv">100</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;ret_ge&#39;</span>] <span class="op">=</span> np.log(dados_capm[<span class="st">&#39;GE&#39;</span>]).diff() <span class="op">*</span> <span class="dv">100</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;ret_microsoft&#39;</span>] <span class="op">=</span> np.log(dados_capm[<span class="st">&#39;MICROSOFT&#39;</span>]).diff() <span class="op">*</span> <span class="dv">100</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;ret_oracle&#39;</span>] <span class="op">=</span> np.log(dados_capm[<span class="st">&#39;ORACLE&#39;</span>]).diff() <span class="op">*</span> <span class="dv">100</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Verifica a estrutura dos dados após o cálculo dos retornos:</p>
-<div id="cc1f5488" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="643846b8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dados_capm)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Date        SANDP   FORD         GE  MICROSOFT     ORACLE  USTB3M  \
 0   2002-01-01  1130.199951  15.30  37.150002  31.855000  17.260000    1.68   
@@ -3265,29 +3244,20 @@ None</code></pre>
 </div>
 </div>
 <p>Ajusta a série anual de rendimentos para base mensal:</p>
-<div id="51e3e220" class="cell" data-execution_count="8">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="53062d76" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;ustb3m&#39;</span>] <span class="op">=</span> dados_capm[<span class="st">&#39;USTB3M&#39;</span>] <span class="op">/</span> <span class="dv">12</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Cálculo dos retornos excedentes:</p>
-<div id="f7ccb9f0" class="cell" data-execution_count="9">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="8bb498ea" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;retexc_sp500&#39;</span>] <span class="op">=</span> dados_capm[<span class="st">&#39;ret_sp500&#39;</span>] <span class="op">-</span> dados_capm[<span class="st">&#39;ustb3m&#39;</span>]</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;retexc_ford&#39;</span>] <span class="op">=</span> dados_capm[<span class="st">&#39;ret_ford&#39;</span>] <span class="op">-</span> dados_capm[<span class="st">&#39;ustb3m&#39;</span>]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;retexc_ge&#39;</span>] <span class="op">=</span> dados_capm[<span class="st">&#39;ret_ge&#39;</span>] <span class="op">-</span> dados_capm[<span class="st">&#39;ustb3m&#39;</span>]</span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;retexc_microsoft&#39;</span>] <span class="op">=</span> dados_capm[<span class="st">&#39;ret_microsoft&#39;</span>] <span class="op">-</span> dados_capm[<span class="st">&#39;ustb3m&#39;</span>]</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;retexc_oracle&#39;</span>] <span class="op">=</span> dados_capm[<span class="st">&#39;ret_oracle&#39;</span>] <span class="op">-</span> dados_capm[<span class="st">&#39;ustb3m&#39;</span>]</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 <p>Exibe a estrutura dos dados:</p>
-<div id="c2188c81" class="cell" data-execution_count="10">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="c4b8fc65" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dados_capm.info())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
 RangeIndex: 194 entries, 0 to 193
@@ -3318,11 +3288,8 @@ None</code></pre>
 </div>
 </div>
 <p>Exibe as 5 primeiras e ultimas linhas dos dados:</p>
-<div id="4e32710e" class="cell" data-execution_count="11">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="2d7eeb67" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dados_capm)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>          Date        SANDP   FORD         GE  MICROSOFT     ORACLE  USTB3M  \
 0   2002-01-01  1130.199951  15.30  37.150002  31.855000  17.260000    1.68   
@@ -3371,9 +3338,7 @@ None</code></pre>
 <h1 data-number="3"><span class="header-section-number">3</span> Análise Exploratória de Dados</h1>
 <section id="estatísticas-descritivas-dos-retornos-excedentes-da-ford" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="estatísticas-descritivas-dos-retornos-excedentes-da-ford"><span class="header-section-number">3.1</span> Estatísticas Descritivas dos Retornos Excedentes da Ford</h2>
-<div id="2b975344" class="cell" data-execution_count="12">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="e349493a" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>ford_stats <span class="op">=</span> dados_capm[<span class="st">&#39;retexc_ford&#39;</span>].describe()</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>ford_skew <span class="op">=</span> skew(dados_capm[<span class="st">&#39;retexc_ford&#39;</span>].dropna())</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>ford_kurt <span class="op">=</span> kurtosis(dados_capm[<span class="st">&#39;retexc_ford&#39;</span>].dropna(), fisher<span class="op">=</span><span class="va">False</span>)</span>
@@ -3389,7 +3354,6 @@ None</code></pre>
 <span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ford_summary)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>media            -0.292935
 mediana          -1.061981
@@ -3404,9 +3368,7 @@ dtype: float64</code></pre>
 </section>
 <section id="estatísticas-descritivas-dos-retornos-excedentes-do-sp-500" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="estatísticas-descritivas-dos-retornos-excedentes-do-sp-500"><span class="header-section-number">3.2</span> Estatísticas Descritivas dos Retornos Excedentes do S&amp;P 500</h2>
-<div id="bdcb1fa9" class="cell" data-execution_count="13">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="6f14a600" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>sp500_stats <span class="op">=</span> dados_capm[<span class="st">&#39;retexc_sp500&#39;</span>].describe()</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>sp500_skew <span class="op">=</span> skew(dados_capm[<span class="st">&#39;retexc_sp500&#39;</span>].dropna())</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>sp500_kurt <span class="op">=</span> kurtosis(dados_capm[<span class="st">&#39;retexc_sp500&#39;</span>].dropna(), fisher<span class="op">=</span><span class="va">False</span>)</span>
@@ -3422,7 +3384,6 @@ dtype: float64</code></pre>
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sp500_summary)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>media             0.350865
 mediana           0.949000
@@ -3437,15 +3398,12 @@ dtype: float64</code></pre>
 </section>
 <section id="gráfico-de-dispersão-dos-retornos-excedentes-da-ford-vs.-sp-500" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="gráfico-de-dispersão-dos-retornos-excedentes-da-ford-vs.-sp-500"><span class="header-section-number">3.3</span> Gráfico de Dispersão dos Retornos Excedentes da Ford vs. S&amp;P 500</h2>
-<div id="c7ac0ac5" class="cell" data-execution_count="14">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="5f4f40bf" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>sns.lmplot(x<span class="op">=</span><span class="st">&#39;retexc_sp500&#39;</span>, y<span class="op">=</span><span class="st">&#39;retexc_ford&#39;</span>, data<span class="op">=</span>dados_capm, line_kws<span class="op">=</span>{<span class="st">&#39;color&#39;</span>: <span class="st">&#39;red&#39;</span>}, ci<span class="op">=</span><span class="va">None</span>)</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">&#39;Retornos Excedentes da Ford vs. Retornos Excedentes do S&amp;P 500&#39;</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">&#39;Retornos Excedentes do S&amp;P 500 (%)&#39;</span>)</span>
 <span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">&#39;Retornos Excedentes da Ford (%)&#39;</span>)</span>
 <span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -3458,35 +3416,29 @@ dtype: float64</code></pre>
 </section>
 <section id="preparação-dos-dados-para-estimação-do-capm" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Preparação dos Dados para Estimação do CAPM</h1>
-<div id="dc5f4adc" class="cell" data-execution_count="15">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="f60ab65d" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> dados_capm[<span class="st">&#39;retexc_sp500&#39;</span>].dropna()</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> dados_capm[<span class="st">&#39;retexc_ford&#39;</span>].dropna()</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Adiciona uma constante para o termo de interceptação</span></span>
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> sm.add_constant(X)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="estimação-do-modelo-capm" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Estimação do modelo CAPM</h1>
-<div id="1661d5fe" class="cell" data-execution_count="16">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="52f651a4" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>capm_model <span class="op">=</span> sm.OLS(y, X).fit()</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Exibe os resultados da estimação</span></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(capm_model.summary())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
 ==============================================================================
 Dep. Variable:            retexc_ford   R-squared:                       0.337
 Model:                            OLS   Adj. R-squared:                  0.334
 Method:                 Least Squares   F-statistic:                     97.26
-Date:                Fri, 16 Aug 2024   Prob (F-statistic):           8.36e-19
-Time:                        15:45:45   Log-Likelihood:                -735.26
+Date:                Sat, 07 Sep 2024   Prob (F-statistic):           8.36e-19
+Time:                        21:16:27   Log-Likelihood:                -735.26
 No. Observations:                 193   AIC:                             1475.
 Df Residuals:                     191   BIC:                             1481.
 Df Model:                           1                                         
@@ -3508,11 +3460,8 @@ Notes:
 </div>
 </div>
 <p>Intervalos de confiança para os parâmetros estimados:</p>
-<div id="fa9f9bce" class="cell" data-execution_count="17">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="5313a616" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(capm_model.conf_int())</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>                     0         1
 const        -2.520315  0.608346
@@ -3522,9 +3471,7 @@ retexc_sp500  1.511791  2.267719</code></pre>
 </section>
 <section id="diagnóstico-do-modelo-via-simulação" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Diagnóstico do Modelo via Simulação</h1>
-<div id="0709966b" class="cell" data-execution_count="18">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="93c3d2d5" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definindo a semente para reprodutibilidade</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1234</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3533,19 +3480,15 @@ retexc_sp500  1.511791  2.267719</code></pre>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Adiciona os retornos simulados ao DataFrame</span></span>
 <span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>dados_capm[<span class="st">&#39;retexc_ford_sim&#39;</span>] <span class="op">=</span> retexc_ford_sim</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
 </section>
 <section id="gráfico-comparando-as-densidades-dos-retornos-simulados-e-observados" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Gráfico comparando as densidades dos retornos simulados e observados</h1>
-<div id="c69334c2" class="cell" data-execution_count="19">
-<details class="code-fold">
-<summary>Código</summary>
+<div id="497f504b" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(dados_capm[<span class="st">&#39;retexc_ford_sim&#39;</span>].dropna(), color<span class="op">=</span><span class="st">&#39;red&#39;</span>, label<span class="op">=</span><span class="st">&#39;Densidade dos Retornos Simulados&#39;</span>)</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>sns.kdeplot(dados_capm[<span class="st">&#39;retexc_ford&#39;</span>].dropna(), color<span class="op">=</span><span class="st">&#39;blue&#39;</span>, label<span class="op">=</span><span class="st">&#39;Densidade dos Retornos Observados&#39;</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">

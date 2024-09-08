@@ -9,7 +9,7 @@ format:
     theme: cosmos
     toc: true
     number-sections: true
-    code-fold: true
+    code-fold: false
     self-contained: true
 execute:
   echo: true
